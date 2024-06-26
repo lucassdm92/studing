@@ -66,11 +66,49 @@ public class ExerciseServices {
     }
 
     public void printReversedLinkedList(SinglyLinkedListNode head) {
-
         if (head.next != null) {
             printReversedLinkedList(head.next);
-
         }
         System.out.print(head.data);
+    }
+
+
+    public long calcArrayOfLong(List<Long> ar) {
+
+        long calc = 0;
+
+        for (Long longs : ar) {
+            calc = longs.longValue() + calc;
+        }
+
+        return calc;
+
+    }
+
+    // -  0 {11 2   4}
+    // -  1 {4  5   6}
+    // -  2 {10 8 -12}
+
+    //4
+    //-1 1 -7 -8
+    //-10 -8 -5 -2
+    //0 9 7 -1
+    //4 4 -2 1
+    public Integer differentDiagonal(List<List<Integer>> list) {
+
+
+        int calc = 0;
+        int calc2 = 0;
+
+        int resulSize = list.size();
+        for (int i = 0; i < list.size(); i++) {
+            calc += list.get(i).get(i);
+            calc2 += list.get(i).get(resulSize - 1);
+
+            resulSize--;
+        }
+
+        return Math.abs(calc - calc2);
+
     }
 }
