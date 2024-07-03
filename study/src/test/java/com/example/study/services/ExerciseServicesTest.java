@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -12,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -77,5 +81,15 @@ public class ExerciseServicesTest {
         exerciseServices.differentDiagonal(collum);
 
         Assertions.assertEquals(15, exerciseServices.differentDiagonal(collum));
+    }
+
+    static Stream<Arguments> getListOfInt() {//-18,1,2,3,7,25
+        return Stream.of(Arguments.of(new int[]{1, 2, 7, 0, 0, 0}, 3, new int[]{-18, 25, 3, 0, 0, 0}, 3, new int[]{-18, 1, 2, 3, 7, 25}));
+    }
+
+    @ParameterizedTest
+    @MethodSource("getListOfInt")
+    public void when_merge_two_arrays(int[] nums1, int m, int[] nums2, int n, int[] expected) {
+        Assertions.assertArrayEquals(expected, exerciseServices.mergeTwoArrays(nums1, m, nums2, n));
     }
 }

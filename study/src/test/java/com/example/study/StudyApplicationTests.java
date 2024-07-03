@@ -2,6 +2,7 @@ package com.example.study;
 
 import com.example.study.services.ExerciseServices;
 import org.junit.jupiter.api.Test;
+import org.mockito.Spy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class StudyApplicationTests implements CommandLineRunner {
 
-	@Autowired
+	@Spy
 	private ExerciseServices exerciseServices;
 	@Test
 	void contextLoads() {

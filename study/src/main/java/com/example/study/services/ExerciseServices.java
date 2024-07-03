@@ -88,27 +88,56 @@ public class ExerciseServices {
     // -  0 {11 2   4}
     // -  1 {4  5   6}
     // -  2 {10 8 -12}
-
-    //4
-    //-1 1 -7 -8
-    //-10 -8 -5 -2
-    //0 9 7 -1
-    //4 4 -2 1
     public Integer differentDiagonal(List<List<Integer>> list) {
 
+        int firstDiagonal = 0;
+        int secondDiagonal = 0;
 
-        int calc = 0;
-        int calc2 = 0;
-
-        int resulSize = list.size();
         for (int i = 0; i < list.size(); i++) {
-            calc += list.get(i).get(i);
-            calc2 += list.get(i).get(resulSize - 1);
+            firstDiagonal += list.get(i).get(i);
+            secondDiagonal += list.get(i).get(list.size() - 1 - i);
+        }
+        return Math.abs(firstDiagonal - secondDiagonal);
 
-            resulSize--;
+    }
+
+
+    /**
+     * This method recevei
+     *
+     *
+     * **/
+    public int[] mergeTwoArrays(int[] nums1, int m, int[] nums2, int n) {
+
+        int[] aux1 = new int[m+n];
+        int i = 0;
+        for(;i < m; i++){
+            aux1[i] = nums1[i];
+
         }
 
-        return Math.abs(calc - calc2);
+        int sizer = i;
+        for(int j= 0; j <m; j++){
 
+            aux1[sizer] = nums2[j];
+            sizer++;
+        }
+
+
+        for(int k = 0 ; k < aux1.length; k++){//1,2,3,2,5,6
+            for(int j=k; j < aux1.length; j++){
+
+                        if(aux1[k] > aux1[j]){
+                            int kaux = aux1[k];
+                            int jaux = aux1[j];
+
+                            aux1[k] = jaux;
+                            aux1[j] = kaux;
+
+                        }
+            }
+        }
+
+        return aux1;
     }
 }
