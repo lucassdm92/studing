@@ -138,6 +138,13 @@ public class ExerciseServices {
             }
         }
 
+        List<String> lista = new ArrayList<>();
+        lista.add("1");
+        lista.add("2");
+        lista.add(null);
+
+        System.out.print(lista);
+
         return aux1;
     }
 }
